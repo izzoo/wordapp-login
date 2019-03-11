@@ -1,0 +1,79 @@
+#Database Properties
+#spring.datasource.driverClassName : com.mysql.jdbc.Driver
+#spring.datasource.url : jdbc:mysql://localhost:3306/questions?useSSL=false&createDatabaseIfNotExist=true
+#spring.datasource.username : hbstudent
+#spring.datasource.password : hbstudent
+
+
+
+#JPA Properties
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/questions?useSSL=false&createDatabaseIfNotExist=true
+    username: hbstudent
+    password: hbstudent
+    driverClassName: com.mysql.jdbc.Driver
+  profiles.actives: "development"
+  jpa:
+    properties:
+      hibernate:
+        default_schema: questions
+        formatSql: true
+        jdbc:
+          lob:
+            non-contextual-creation: true
+    generate-ddl: true
+    databasePlatform: "org.hibernate.dialect.MySQL5InnoDBDialect"
+    show-sql: false
+#Server Properties
+server:
+  port: 8080
+
+
+security:
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
+
+facebook:
+  client:
+    clientId: 762838394115194
+    clientSecret: 9d7a57359ed82f075e5dd6e358c48125
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+spring.main.allow-bean-definition-overriding: true
+
+# Define a custom port instead of the default 8080
+server.port: 8443
+
+# Tell Spring Security (if used) to require requests over HTTPS
+server.ssl.enabled: true
+
+# The format used for the keystore
+server.ssl.key-store-type: PKCS12
+# The path to the keystore containing the certificate
+server.ssl.key-store: keystore.p12
+# The password used to generate the certificate
+server.ssl.key-store-password: 13485128
+# The alias mapped to the certificate
+server.ssl.key-alias: tomcat
+
+
+#debug log
+
+logging.pattern.console:
+
